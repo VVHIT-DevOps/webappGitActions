@@ -18,6 +18,7 @@ jobs:
             - name: list files
               run: ls -l
     Deployment:
+        needs: first-workflow
         runs-on: ubuntu-latest
         steps: 
             - name: hellow
