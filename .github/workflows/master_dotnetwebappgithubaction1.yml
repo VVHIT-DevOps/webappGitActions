@@ -16,17 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - run: | 
-          dir
-          echo ${{env.DOTNET_ROOT}}
-
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v3.2.0
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '6.0.x'
           include-prerelease: true
-          cache: true
-          cache-dependency-path: webappGitActions\packages.lock.json
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
@@ -46,18 +40,18 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: .net-app
-
+      
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'dotnetwebappgithubaction1'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9015E53EAF5E46F6A7E79FBE2EB8C6EB }}
           package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_47AD3D36C66E4E35BD85F232BFA8BF6A }}
