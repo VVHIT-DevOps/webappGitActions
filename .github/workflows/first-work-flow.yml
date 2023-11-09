@@ -9,3 +9,7 @@ jobs:
         steps:
             - name: hellow
               run: echo "hello"
+            - name: get code files
+              uses: actions/checkout@v4.1.1
+            - name: list files
+              run: ls -l
