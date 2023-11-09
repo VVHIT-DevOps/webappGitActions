@@ -14,6 +14,7 @@ jobs:
     runs-on: windows-latest
     env:
       NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+      DOTNET_INSTALL_DIR: D:\app
     steps:
       - uses: actions/checkout@v4
 
