@@ -24,7 +24,7 @@ jobs:
           dotnet-version: '6.0.x'
           include-prerelease: true
           cache: true
-          cache-dependency-path: webappGitActions/webappGitActions/packages.lock.json
+          cache-dependency-path: webappGitActions/packages.lock.json
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
